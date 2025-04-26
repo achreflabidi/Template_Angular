@@ -1,0 +1,34 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Année</th>
+            <th>Geners</th>
+            <th>Acteurs</th>
+            <th>Réalisateurs</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let movie of movies" >
+            <td>{{ movie.id }}</td>
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.year }}</td>
+      <td>{{ movie.genres.join(', ') }}</td>
+      <td>{{ movie.actors.join(', ') }}</td>
+      <td>{{ movie.directors.join(', ') }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let actor of movie.actorsNames">{{ actor }}</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li *ngFor="let director of movie.directorsNames">{{ director }}</li>
+        </ul>
+      </td>
+        </tr>
+    </tbody>
+</table>
+<button *ngIf="!isLastPage()" (click)="loadMovies()">Charger plus</button>
